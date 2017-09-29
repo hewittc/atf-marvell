@@ -394,6 +394,8 @@ void psci_do_state_coordination(unsigned int end_pwrlvl,
 	plat_local_state_t target_state, *req_states;
 
 	assert(end_pwrlvl <= PLAT_MAX_PWR_LVL);
+	if (end_pwrlvl > PLAT_MAX_PWR_LVL)
+		return;
 	parent_idx = psci_cpu_pd_nodes[cpu_idx].parent_node;
 
 	/* For level 0, the requested state will be equivalent
